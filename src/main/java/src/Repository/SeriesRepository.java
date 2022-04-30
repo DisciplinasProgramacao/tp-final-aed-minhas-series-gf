@@ -48,7 +48,6 @@ public class SeriesRepository {
             }
         }
         System.out.println("Nao encontramos a serie que voce procura, tente inseri-la :)");
-        ;
     }
 
     public Serie[] ordena() throws IOException {
