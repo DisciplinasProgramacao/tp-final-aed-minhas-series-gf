@@ -1,17 +1,18 @@
-package src.structure;
+package core.structure;
 
-public class Nodo {
+public class Nodo<T> {
     private Nodo anterior;
     private Nodo proximo;
-    private String valor;
-    //Define valor do nó.
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-    //Retorna valor do nó.
-    public String getValor() {
+    private T valor;
+
+    public T getValor() {
         return valor;
     }
+
+    public void setValor(T valor) {
+        this.valor = valor;
+    }
+
     //Define nó anterior.
     public void setAnterior(Nodo anterior) {
         this.anterior = anterior;

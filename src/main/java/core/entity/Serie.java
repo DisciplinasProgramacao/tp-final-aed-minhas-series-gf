@@ -1,4 +1,6 @@
-package entity;
+package core.entity;
+
+import core.structure.Lista;
 
 public class Serie {
 
@@ -7,7 +9,15 @@ public class Serie {
     private String dataLancamento;
     private int qtdEps;
 
+    private Lista<Espectador> espectadores;
 
+    public Lista<Espectador> getEspectadores() {
+        return espectadores;
+    }
+
+    public void setEspectadores(Lista<Espectador> espectadores) {
+        this.espectadores = espectadores;
+    }
 
     public Serie() {
         

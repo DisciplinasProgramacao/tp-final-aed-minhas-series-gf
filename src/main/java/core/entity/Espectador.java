@@ -1,9 +1,21 @@
-package src.entity;
+package core.entity;
+
+import core.structure.Lista;
 
 public class Espectador {
 
     private String nome;
     private String login;
+
+    private Lista<Serie> series;
+
+    public Lista<Serie> getSeries() {
+        return series;
+    }
+
+    public void setSeries(Lista<Serie> series) {
+        this.series = series;
+    }
 
     public Espectador() {
     }

@@ -1,6 +1,6 @@
-package src.utils;
+package core.utils;
 
-import src.Service.SeriesService;
+import core.service.SeriesService;
 
 import java.io.IOException;
 import java.util.Scanner;

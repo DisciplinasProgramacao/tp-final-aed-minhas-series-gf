@@ -1,9 +1,19 @@
-package src.structure;
+package core.structure;
+
+import core.entity.Serie;
 
 import java.util.ArrayList;
 
-public class Lista {
-    private Nodo primeiro = null, ultimo = null;
+public class Lista<T> {
+    private Nodo<Serie> primeiro = null, ultimo = null;
+
+    public Lista() {
+    }
+
+    public Lista(Nodo primeiro, Nodo ultimo) {
+        this.primeiro = primeiro;
+        this.ultimo = ultimo;
+    }
 
     //Define nó como primeiro da lista.
     public void setPrimeiro(Nodo primeiro) {
@@ -26,14 +36,14 @@ public class Lista {
     }
 
     //Percorre os nós da lista atribuindo os valores de cada nó em um ArrayList enquanto o próximo nó não for nulo.
-    public ArrayList<String> listar() throws Exception {
-        ArrayList<String> lista = new ArrayList<String>();
+    public ArrayList<Object> listar() throws Exception {
+        ArrayList<Object> lista = new ArrayList<>();
         if (primeiro == null)
             throw new Exception("A lista esta vazia!");
         else {
             Nodo aux = getPrimeiro();
             while (aux != null) {
-                String vl = aux.getValor();
+                Object vl = aux.getValor();
                 lista.add(vl);
                 aux = aux.getProximo();
             }

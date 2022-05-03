@@ -1,4 +1,4 @@
-package src.entity;
+package core.entity;
 
 public class Avaliacao {
     private String login;

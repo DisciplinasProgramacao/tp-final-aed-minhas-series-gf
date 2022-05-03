@@ -1,16 +1,13 @@
-package src.Repository;
+package core.repository;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
-import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
-import entity.Serie;
-import utils.Menu;
-
-import entity.Serie;
+import core.entity.Serie;
+import core.utils.Menu;
 
 public class SeriesRepository {
 
@@ -27,7 +24,7 @@ public class SeriesRepository {
         Random gerador = new Random();
         FileWriter fWriter = new FileWriter(arch, true);
 
-        serie.setId(gerador.nextInt(7000, 10000));
+        serie.setId(gerador.nextInt(10000));
         fWriter.append(serie.toString());
         fWriter.close();
 
@@ -139,7 +136,7 @@ public class SeriesRepository {
              * ID; NOME ; DATA ; EPS
              * 01 serieDaora 31/02/2001 50
              * [0] [1] [2] [3]
-             * 
+             *
              */
 
             String[] vet = serieData[j].split(";");

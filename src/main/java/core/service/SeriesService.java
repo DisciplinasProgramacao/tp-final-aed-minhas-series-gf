@@ -1,10 +1,9 @@
-package src.Service;
+package core.service;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Scanner;
-import src.Repository.SeriesRepository;
-import entity.Serie;
+import core.repository.SeriesRepository;
+import core.entity.Serie;
 
 public class SeriesService {
 
