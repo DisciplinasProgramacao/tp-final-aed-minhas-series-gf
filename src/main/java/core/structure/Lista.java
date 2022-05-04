@@ -3,6 +3,7 @@ package core.structure;
 import core.entity.Serie;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Lista<T> {
     private Nodo<T> primeiro = null;
@@ -12,143 +13,81 @@ public class Lista<T> {
     public Lista() {
     }
 
-    public Lista(Nodo<T> primeiro, Nodo<T> ultimo) {
-        this.primeiro = primeiro;
-        this.ultimo = ultimo;
-    }
-
-    //Define nó como primeiro da lista.
-    public void setPrimeiro(Nodo<T> primeiro) {
-        this.primeiro = primeiro;
-    }
-
     //Retorna o primeiro nó da lista.
-    public Nodo getPrimeiro() {
-        return primeiro;
-    }
+    public T getPrimeiro() {
+        if (primeiro == null)
+            throw new IndexOutOfBoundsException("Errou feio errou rude");
 
-    //Define nó como ultimo da lista.
-    public void setUltimo(Nodo<T> ultimo) {
-        this.ultimo = ultimo;
+        return primeiro.getValor();
     }
 
     //Retorna ultimo nó da lista.
-    public Nodo getUltimo() {
-        return ultimo;
-    }
+    public T getUltimo() {
+        if (ultimo == null)
+            throw new IndexOutOfBoundsException("Errou feio errou rude");
 
-    //Percorre os nós da lista atribuindo os valores de cada nó em um ArrayList enquanto o próximo nó não for nulo.
-    public ArrayList<Object> listar() throws Exception {
-        ArrayList<Object> lista = new ArrayList<>();
-        if (primeiro == null)
-            throw new Exception("A lista esta vazia!");
-        else {
-            Nodo aux = getPrimeiro();
-            while (aux != null) {
-                Object vl = aux.getValor();
-                lista.add(vl);
-                aux = aux.getProximo();
-            }
-            return lista;
-        }
+        return ultimo.getValor();
+
     }
 
     //Percorre os nós da lista comparando os valores de cada nó com o valor passado por parametro enquanto o próximo nó não for nulo.
-    public boolean procura(Nodo valor) {
+    public T procura(Object valor) {
 
-        if (getPrimeiro() == null || getPrimeiro().equals(null)){
-            return false;
+        if (getPrimeiro() == null){
+            return null;
         }
 
-        Serie serieAux = new Serie();
-        if (valor.getValor() instanceof Serie)
-            serieAux = (Serie) valor.getValor();
-
-        Serie serie = new Serie();
-        serie.setNome(serieAux.getNome());
-        Nodo<Serie> aux = (Nodo<Serie>) getPrimeiro().getValor();
+        Nodo<T> aux = primeiro;
 
         while (aux != null) {
-            if (serieAux.getNome().equals(aux.getValor().getNome())) {
-                returnSerie(serieAux);
-                return true;
+            if (aux.getValor().equals(valor)) {
+                return aux.getValor();
             }
-            aux = getPrimeiro().getProximo();
+            aux = aux.getProximo();
         }
-        return false;
-    }
-
-    public void returnSerie(Serie serie){
-        StringBuilder el = new StringBuilder();
-        el.append("Nome: ").append(serie.getNome()).append("\n")
-                .append("Quantidade de Eps: ").append(serie.getQtdEps()).append("\n")
-                .append("Data de lancamento: ").append(serie.getDataLancamento());
-
-        System.out.println(el);
+        return null;
     }
 
     //Insere valor passado por parametro no inicio da lista, se o valor não existir na lista.
-    public void insereInicio(Nodo valor) throws Exception {
-        boolean procura = false;
+    public void insereInicio(T elemento) {
 
-        Serie aux = new Serie();
-        if (valor.getValor() instanceof Serie)
-            aux = (Serie) valor.getValor();
-
-
-        procura = procura(valor);
-        if (procura == false) {
-            Nodo novo = new Nodo();
-            if (primeiro == null) {
-                novo.setValor(valor);
-                setPrimeiro(novo);
-                setUltimo(novo);
-            } else {
-                primeiro.setAnterior(novo);
-                novo.setValor(valor);
-                novo.setProximo(primeiro);
-                setPrimeiro(novo);
-            }
+        Nodo<T> nodo = new Nodo<>(elemento);
+        if (primeiro == null) {
+            ultimo = nodo;
         } else {
-            throw new Exception("Valor já existe na lista!");
+            primeiro.setAnterior(nodo);
+            nodo.setProximo(primeiro);
         }
+        primeiro = nodo;
+        size++;
     }
 
     //Insere valor passado por parametro no fim da lista, se o valor não existir na lista.
-    public void insereFim(Nodo nodo) throws Exception {
-        Nodo novo = new Nodo();
-        boolean procura = false;
+    public void insereFim(T elemento) {
+        Nodo<T> nodo = new Nodo<>(elemento);
 
-        Serie aux = new Serie();
-        if (nodo.getValor() instanceof Serie)
-            aux = (Serie) nodo.getValor();
-
-        procura = procura(nodo);
-
-        if (procura == true)
-            throw new Exception("Valor já existe na lista!");
-        else {
-            if (ultimo == null) {
-                novo.setValor(nodo);
-                primeiro = novo;
-                ultimo = novo;
-            } else {
-                ultimo.setProximo(novo);
-                novo.setValor(nodo);
-                ultimo = novo;
-            }
+        if (ultimo == null) {
+            primeiro = nodo;
+        } else {
+            nodo.setAnterior(ultimo);
+            ultimo.setProximo(nodo);
         }
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
+        ultimo = nodo;
+        this.size++;
     }
 
     public int size(){
         return size;
+    }
+
+    public void forEach(Consumidor<T> consumidor) {
+        if (getPrimeiro() == null) {
+            return;
+        }
+        Nodo<T> aux = primeiro;
+        while (aux != null) {
+            consumidor.aceitar(aux.getValor());
+            aux = aux.getProximo();
+        }
     }
 }
