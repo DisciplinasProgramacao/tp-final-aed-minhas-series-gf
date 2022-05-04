@@ -38,7 +38,7 @@ public class SeriesRepository {
 
         Serie procura = series.procura(nome);
         if (procura != null) {
-            System.out.println("Serie encontrada!");
+            System.out.println("Serie encontrada!" + "\n" + procura.toStringPt2());
         } else {
             System.out.println("Nao encontramos a serie que voce procura, tente inseri-la :)");
         }

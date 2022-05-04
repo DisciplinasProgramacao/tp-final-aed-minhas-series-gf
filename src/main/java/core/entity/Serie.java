@@ -70,6 +70,10 @@ public class Serie {
         return "\n" + id + ";" + nome + ";" + dataLancamento + ";" + qtdEps;
     }
 
+    public String toStringPt2() {
+        return "id: " + id + "\nNome: " + nome + "\nDate de lancamento: " + dataLancamento + "\nQuantidade de Eps: " + qtdEps;
+    }
+
     @Override
     public boolean equals(Object obj) {
 
