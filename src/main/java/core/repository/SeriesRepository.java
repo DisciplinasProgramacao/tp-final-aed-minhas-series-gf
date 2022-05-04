@@ -17,8 +17,7 @@ public class SeriesRepository {
     static final File arch = new File("series.txt");
 
     private Lista<Serie> loadSerie() throws Exception {
-        Lista<Serie> serie = insertRandomValues();
-        serie = leitorSeries();
+        Lista<Serie> serie = leitorSeries();
         return serie;
     }
 
@@ -37,12 +36,16 @@ public class SeriesRepository {
     public void findSerie(String nome) throws Exception {
         Lista<Serie> series = loadSerie();
 
-        while(series.getPrimeiro() != null){
+        Nodo<Serie> nodo = new Nodo<>();
+        Serie serie = new Serie();
+        serie.setNome(nome);
+        nodo.setValor(serie);
 
+        if (series.procura(nodo)) {
+            System.out.println("Serie encontrada!");
         }
-        series.procura(nome);
-
-        System.out.println("Nao encontramos a serie que voce procura, tente inseri-la :)");
+        else
+            System.out.println("Nao encontramos a serie que voce procura, tente inseri-la :)");
     }
 
 //    public Serie[] ordena() throws IOException {
@@ -80,33 +83,16 @@ public class SeriesRepository {
         int aux = 1110;
 
         if (series.getPrimeiro() == null) {
-            FileWriter fWrtier = new FileWriter(arch);
-            for (int i = 0; i < 100; i++) {
-                aux += i;
-                serieNodo.setValor(new Serie(gerador.nextInt(1000) + aux - 1000, "serieTeste", "01/01/2000", 999));
-                series.insereFim(serieNodo);
-
-                fWrtier.write(series.getUltimo().toString());
-
-            }
-
-            fWrtier.close();
-            return series;
-
-            //todo make sizeOf better
-        } else if (series.sizeOf(series) < 500) {
             FileWriter fWrtier = new FileWriter(arch, true);
-
             for (int i = 0; i < 100; i++) {
                 aux += i;
-                serieNodo.setValor(new Serie(gerador.nextInt(1000) + aux - 1000, "serieTeste", "01/01/2000", 999));
+                serieNodo.setValor(new Serie(gerador.nextInt(1000) + aux - 1000, "serieTeste", "01/01/2000", i+1));
                 series.insereFim(serieNodo);
 
                 fWrtier.append(series.getUltimo().toString());
-            }
 
+            }
             fWrtier.close();
-            return series;
         }
         return series;
     }
@@ -130,8 +116,9 @@ public class SeriesRepository {
             archReader.close();
             return serie;
         }
+        serie.setSize(i-1);
 
-        for (int j = 0; j < serie.sizeOf(serie); j++) {
+        for (int j = 0; j < serie.size(); j++) {
             /*
              * ID; NOME ; DATA ; EPS
              * 01 serieDaora 31/02/2001 50
@@ -143,7 +130,7 @@ public class SeriesRepository {
             Serie serie1 = new Serie(Integer.parseInt(vet[0]),vet[1], vet[2], Integer.parseInt(vet[3]));
             Nodo<Serie> serieNodo = new Nodo<>();
             serieNodo.setValor(serie1);
-            serie.insereInicio(serieNodo);
+            serie.insereFim(serieNodo);
 
         }
 

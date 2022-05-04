@@ -67,7 +67,7 @@ public class Serie {
 
     @Override
     public String toString() {
-        return id + ";" + nome + ";" + dataLancamento + ";" + qtdEps + "\n";
+        return "\n" + id + ";" + nome + ";" + dataLancamento + ";" + qtdEps;
     }
         
 

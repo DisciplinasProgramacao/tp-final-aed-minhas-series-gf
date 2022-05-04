@@ -9,7 +9,7 @@ public class Menu {
     private Scanner sc = new Scanner(System.in);
     private SeriesService serieService = new SeriesService();
 
-    public void mainMenu() throws IOException {
+    public void mainMenu() throws Exception {
         int opcao = -1;
 
         while (opcao != 0) {

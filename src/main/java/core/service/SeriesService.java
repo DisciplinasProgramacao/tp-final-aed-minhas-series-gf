@@ -37,6 +37,6 @@ public class SeriesService {
 
     public void sort() throws IOException {
         System.out.println("ordenando o vetor usando bubble sort, o melhor e pior metodo de todos");
-        seriesRepository.ordena();
+        //seriesRepository.ordena();
     }
 }

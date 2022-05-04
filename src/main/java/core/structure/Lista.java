@@ -5,7 +5,10 @@ import core.entity.Serie;
 import java.util.ArrayList;
 
 public class Lista<T> {
-    private Nodo<T> primeiro = null, ultimo = null;
+    private Nodo<T> primeiro = null;
+    private Nodo<T> ultimo = null;
+
+    private int size;
     public Lista() {
     }
 
@@ -15,7 +18,7 @@ public class Lista<T> {
     }
 
     //Define nó como primeiro da lista.
-    public void setPrimeiro(Nodo primeiro) {
+    public void setPrimeiro(Nodo<T> primeiro) {
         this.primeiro = primeiro;
     }
 
@@ -25,7 +28,7 @@ public class Lista<T> {
     }
 
     //Define nó como ultimo da lista.
-    public void setUltimo(Nodo ultimo) {
+    public void setUltimo(Nodo<T> ultimo) {
         this.ultimo = ultimo;
     }
 
@@ -51,37 +54,49 @@ public class Lista<T> {
     }
 
     //Percorre os nós da lista comparando os valores de cada nó com o valor passado por parametro enquanto o próximo nó não for nulo.
-    public boolean procura(String valor) {
-        Nodo aux1 = getPrimeiro();
-        Object aux = aux1.getValor();
-        Serie serieAux = new Serie();
+    public boolean procura(Nodo valor) {
 
-        if (aux instanceof Serie)
-            serieAux = (Serie) aux;
+        if (getPrimeiro() == null || getPrimeiro().equals(null)){
+            return false;
+        }
+
+        Serie serieAux = new Serie();
+        if (valor.getValor() instanceof Serie)
+            serieAux = (Serie) valor.getValor();
 
         Serie serie = new Serie();
-        serie.setNome(valor);
+        serie.setNome(serieAux.getNome());
+        Nodo<Serie> aux = (Nodo<Serie>) getPrimeiro().getValor();
 
         while (aux != null) {
-            if (serieAux.getNome().equals(serie.getNome())) {
+            if (serieAux.getNome().equals(aux.getValor().getNome())) {
+                returnSerie(serieAux);
                 return true;
             }
-            aux1 = aux1.getProximo();
+            aux = getPrimeiro().getProximo();
         }
         return false;
+    }
+
+    public void returnSerie(Serie serie){
+        StringBuilder el = new StringBuilder();
+        el.append("Nome: ").append(serie.getNome()).append("\n")
+                .append("Quantidade de Eps: ").append(serie.getQtdEps()).append("\n")
+                .append("Data de lancamento: ").append(serie.getDataLancamento());
+
+        System.out.println(el);
     }
 
     //Insere valor passado por parametro no inicio da lista, se o valor não existir na lista.
     public void insereInicio(Nodo valor) throws Exception {
         boolean procura = false;
 
-
         Serie aux = new Serie();
         if (valor.getValor() instanceof Serie)
             aux = (Serie) valor.getValor();
 
 
-        procura = procura(aux.getNome());
+        procura = procura(valor);
         if (procura == false) {
             Nodo novo = new Nodo();
             if (primeiro == null) {
@@ -104,13 +119,11 @@ public class Lista<T> {
         Nodo novo = new Nodo();
         boolean procura = false;
 
-
-
         Serie aux = new Serie();
         if (nodo.getValor() instanceof Serie)
             aux = (Serie) nodo.getValor();
 
-        procura = procura(aux.getNome());
+        procura = procura(nodo);
 
         if (procura == true)
             throw new Exception("Valor já existe na lista!");
@@ -127,11 +140,15 @@ public class Lista<T> {
         }
     }
 
-    public int sizeOf(Lista<T> lista){
-        int size = 0;
-        while(lista.getPrimeiro().getProximo() != null){
-            size++;
-        }
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int size(){
         return size;
     }
 }
