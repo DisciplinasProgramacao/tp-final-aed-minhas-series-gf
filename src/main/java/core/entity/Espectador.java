@@ -7,13 +7,13 @@ public class Espectador {
     private String nome;
     private String login;
 
-    private Lista<Serie> series;
+    private Lista<Avaliacao> series;
 
-    public Lista<Serie> getSeries() {
+    public Lista<Avaliacao> getSeries() {
         return series;
     }
 
-    public void setSeries(Lista<Serie> series) {
+    public void setSeries(Lista<Avaliacao> series) {
         this.series = series;
     }
 
