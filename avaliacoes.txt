@@ -1,9 +1,9 @@
-torres; ;50;5
-coelho; ;120;4
-souza; ;79;5
-soares; ;6;2
-gomes; ;115;3
-cardoso; ;36;4
-lima; ;55;5
-abreu; ;87;4
-virginia; ;74;5git push
+torres;8167;50;5
+coelho;8168;120;4
+souza;9087;79;5
+soares;8193;6;2
+gomes;9283;115;3
+cardoso;6473;36;4
+lima;5842;55;5
+abreu;4831;87;4
+virginia;8580;74;5git push
