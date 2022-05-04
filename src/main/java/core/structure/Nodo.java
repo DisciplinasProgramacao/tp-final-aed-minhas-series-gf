@@ -1,5 +1,7 @@
 package core.structure;
 
+import core.entity.Serie;
+
 public class Nodo<T> {
     private Nodo anterior;
     private Nodo proximo;

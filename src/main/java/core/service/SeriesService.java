@@ -29,7 +29,7 @@ public class SeriesService {
         seriesRepository.addNewSerie(serieToAdd);
     }
 
-    public void searchSerie() throws IOException {
+    public void searchSerie() throws Exception {
         System.out.println("Qual o nome da série?");
         String nomeNew = in.nextLine();
         seriesRepository.findSerie(nomeNew);

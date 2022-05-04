@@ -5,12 +5,11 @@ import core.entity.Serie;
 import java.util.ArrayList;
 
 public class Lista<T> {
-    private Nodo<Serie> primeiro = null, ultimo = null;
-
+    private Nodo<T> primeiro = null, ultimo = null;
     public Lista() {
     }
 
-    public Lista(Nodo primeiro, Nodo ultimo) {
+    public Lista(Nodo<T> primeiro, Nodo<T> ultimo) {
         this.primeiro = primeiro;
         this.ultimo = ultimo;
     }
@@ -53,20 +52,36 @@ public class Lista<T> {
 
     //Percorre os nós da lista comparando os valores de cada nó com o valor passado por parametro enquanto o próximo nó não for nulo.
     public boolean procura(String valor) {
-        Nodo aux = getPrimeiro();
+        Nodo aux1 = getPrimeiro();
+        Object aux = aux1.getValor();
+        Serie serieAux = new Serie();
+
+        if (aux instanceof Serie)
+            serieAux = (Serie) aux;
+
+        Serie serie = new Serie();
+        serie.setNome(valor);
+
         while (aux != null) {
-            if (valor.equals(aux.getValor())) {
+            if (serieAux.getNome().equals(serie.getNome())) {
                 return true;
             }
-            aux = aux.getProximo();
+            aux1 = aux1.getProximo();
         }
         return false;
     }
 
     //Insere valor passado por parametro no inicio da lista, se o valor não existir na lista.
-    public void insereInicio(String valor) throws Exception {
+    public void insereInicio(Nodo valor) throws Exception {
         boolean procura = false;
-        procura = procura(valor);
+
+
+        Serie aux = new Serie();
+        if (valor.getValor() instanceof Serie)
+            aux = (Serie) valor.getValor();
+
+
+        procura = procura(aux.getNome());
         if (procura == false) {
             Nodo novo = new Nodo();
             if (primeiro == null) {
@@ -85,22 +100,38 @@ public class Lista<T> {
     }
 
     //Insere valor passado por parametro no fim da lista, se o valor não existir na lista.
-    public void insereFim(String valor) throws Exception {
+    public void insereFim(Nodo nodo) throws Exception {
         Nodo novo = new Nodo();
         boolean procura = false;
-        procura = procura(valor);
+
+
+
+        Serie aux = new Serie();
+        if (nodo.getValor() instanceof Serie)
+            aux = (Serie) nodo.getValor();
+
+        procura = procura(aux.getNome());
+
         if (procura == true)
             throw new Exception("Valor já existe na lista!");
         else {
             if (ultimo == null) {
-                novo.setValor(valor);
+                novo.setValor(nodo);
                 primeiro = novo;
                 ultimo = novo;
             } else {
                 ultimo.setProximo(novo);
-                novo.setValor(valor);
+                novo.setValor(nodo);
                 ultimo = novo;
             }
         }
+    }
+
+    public int sizeOf(Lista<T> lista){
+        int size = 0;
+        while(lista.getPrimeiro().getProximo() != null){
+            size++;
+        }
+        return size;
     }
 }
