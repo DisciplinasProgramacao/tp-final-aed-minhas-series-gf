@@ -5,6 +5,7 @@ import core.entity.Serie;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class EspectadorRepository {
@@ -41,4 +42,16 @@ public class EspectadorRepository {
         archReader.close();
         return espectador;
     }
+
+    public Espectador login(String login) throws FileNotFoundException {
+        Espectador[] espectadores = loadEspectador();
+
+        for (Espectador spec : espectadores) {
+            if (login.equals(spec.getLogin())){
+                return spec;
+            }
+        }
+        return null;
+    }
+
 }

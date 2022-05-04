@@ -19,6 +19,7 @@ public class Menu {
             System.out.println("1 - Consultar série");
             System.out.println("2 - Adicionar nova série");
             System.out.println("3 - ordenar series");
+            System.out.println("4 - fazer Login");
             opcao = sc.nextInt();
 
             switch (opcao) {
@@ -34,6 +35,8 @@ public class Menu {
                 case 3:
                     serieService.sort();
                     break;
+                case 4:
+
                 default:
                     System.out.println("Opção inválida!");
                     break;
