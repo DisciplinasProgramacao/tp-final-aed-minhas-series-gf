@@ -69,6 +69,16 @@ public class Serie {
     public String toString() {
         return "\n" + id + ";" + nome + ";" + dataLancamento + ";" + qtdEps;
     }
-        
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof String){
+            return this.getNome().equals(obj);
+        }
+        if (obj instanceof Serie){
+            return this.getNome().equals(((Serie) obj).getNome());
+        }
+        return false;
+    }
 }
