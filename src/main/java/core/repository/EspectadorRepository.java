@@ -48,7 +48,7 @@ public class EspectadorRepository {
         Espectador[] espectadores = loadEspectador();
 
         for (Espectador spec : espectadores) {
-            if (login.equals(spec.getLogin())){
+            if (login.equals(spec.getLogin())) {
                 logged = spec;
                 return logged;
             }

@@ -21,7 +21,6 @@ public class SeriesRepository {
         return serie;
     }
 
-    // todo add verifications to check serie obj integrity
     public void addNewSerie(Serie serie) throws IOException {
         Random gerador = new Random();
         FileWriter fWriter = new FileWriter(arch, true);
@@ -89,7 +88,6 @@ public class SeriesRepository {
                 series.insereFim(serie);
 
                 fWrtier.append(series.getUltimo().toString());
-
             }
             fWrtier.close();
         }
