@@ -12,6 +12,7 @@ public class EspectadorRepository {
 
     static final File arch = new File("espectadores.txt");
 
+    public Espectador logged = null;
 
     public Espectador[] loadEspectador() throws FileNotFoundException {
 
@@ -48,10 +49,23 @@ public class EspectadorRepository {
 
         for (Espectador spec : espectadores) {
             if (login.equals(spec.getLogin())){
-                return spec;
+                logged = spec;
+                return logged;
             }
         }
         return null;
+    }
+
+    public Espectador getLogged() {
+        return logged;
+    }
+
+    public void setLogged(Espectador logged) {
+        this.logged = logged;
+    }
+
+    public void logout() throws FileNotFoundException {
+        logged = null;
     }
 
 }

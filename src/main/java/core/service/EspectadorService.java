@@ -15,6 +15,11 @@ public class EspectadorService {
         System.out.println("Insira seu Login: ");
         String login = in.nextLine();
 
+        if(espectadorRepository.getLogged()!=null){
+            System.out.println("Já tem alguem logado, saia antes de prosseguir");
+            return;
+        }
+
         Espectador response = espectadorRepository.login(login);
 
         if (response==null){
@@ -23,5 +28,14 @@ public class EspectadorService {
         else {
             System.out.printf("Bem vindo" + response.getNome());
         }
+    }
+    public void fazerLogout() throws FileNotFoundException {
+
+        if (espectadorRepository.getLogged() == null){
+            System.out.println("Não tem ningém logado :/");
+            return;
+        }
+        espectadorRepository.logout();
+        System.out.println("Até mais o/");
     }
 }
