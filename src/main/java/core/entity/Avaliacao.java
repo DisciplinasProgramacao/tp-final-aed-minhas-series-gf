@@ -13,6 +13,9 @@ public class Avaliacao {
         this.avaliacao = avaliacao;
     }
 
+    public Avaliacao(){
+    }
+
     public String getLogin() {
         return login;
     }
