@@ -9,7 +9,7 @@ import core.structure.Lista;
 
 public class AvaliacoesRepository {
     
-    static final File arch = new File("avaliacao.txt");
+    static final File arch = new File("avaliacoes.txt");
 
     public Lista<Avaliacao> loadAvaliacao() throws FileNotFoundException {
         Scanner archReader = new Scanner(arch);
@@ -23,12 +23,12 @@ public class AvaliacoesRepository {
         }
 
         Lista<Avaliacao> avaliacoes = new Lista<>();
-        Avaliacao avaliacao = new Avaliacao();
-        for (int j = 0; j < avaliacoes.size(); j++) {                   
+        for (int j = 0; j < i; j++) {
             /*
                  Login;IdSerie;EpsAssistidos;Avaliação
                   [0];  [1];       [2];        [3]
             */
+            Avaliacao avaliacao = new Avaliacao();
             String[] vet = avaliacaoData[j].split(";");
             avaliacao.setLogin(vet[0]);
             avaliacao.setIdSerie(Integer.parseInt(vet[1]));

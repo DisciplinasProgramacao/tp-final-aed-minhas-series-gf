@@ -16,9 +16,8 @@ public class SeriesRepository {
 
     static final File arch = new File("series.txt");
 
-    private Lista<Serie> loadSerie() throws Exception {
-        Lista<Serie> serie = leitorSeries();
-        return serie;
+    public Lista<Serie> loadSerie() throws Exception {
+        return leitorSeries();
     }
 
     public void addNewSerie(Serie serie) throws IOException {

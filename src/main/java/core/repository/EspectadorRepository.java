@@ -1,10 +1,13 @@
 package core.repository;
 
+import core.entity.Avaliacao;
 import core.entity.Espectador;
 import core.entity.Serie;
+import core.structure.Lista;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -12,6 +15,7 @@ public class EspectadorRepository {
 
     static final File arch = new File("espectadores.txt");
 
+    private AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
     public Espectador logged = null;
 
     public Espectador[] loadEspectador() throws FileNotFoundException {
@@ -41,6 +45,20 @@ public class EspectadorRepository {
         }
 
         archReader.close();
+
+        Lista<Avaliacao> avaliacaoLista = avaliacoesRepository.loadAvaliacao();
+        Lista<Avaliacao> avaliacaoEspectador = new Lista<>();
+
+
+        avaliacaoLista.forEach(avaliacao -> {
+            for (int j = 0; j < espectador.length; j++) {
+                int finalJ = j;
+                if (avaliacao.getLogin().equals(espectador[finalJ].getLogin())) {
+                    avaliacaoEspectador.insereFim(avaliacao);
+                    espectador[finalJ].setSeries(avaliacaoEspectador);
+                }
+            }
+        });
         return espectador;
     }
 
