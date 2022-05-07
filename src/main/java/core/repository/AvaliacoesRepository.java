@@ -5,11 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import core.entity.Avaliacao;
+import core.entity.Serie;
 import core.structure.Lista;
 
 public class AvaliacoesRepository {
     
     static final File arch = new File("avaliacoes.txt");
+    private SeriesRepository seriesRepository = new SeriesRepository();
 
     public Lista<Avaliacao> loadAvaliacao() throws FileNotFoundException {
         Scanner archReader = new Scanner(arch);
@@ -40,4 +42,26 @@ public class AvaliacoesRepository {
         archReader.close();
         return avaliacoes;
     }
+
+
+  /*  public float mediaAvalicao(){
+
+        Serie series = new Serie();
+        float media = 0;
+        int soma=0;
+
+        Lista<Serie> seriesLista = seriesRepository.loadSerie();
+        
+
+        //Lista<Avaliacao> avaliacaoLista = avaliacoesRepository.loadAvaliacao();
+
+        for(int i=0; i<series.getAvaliacao().size(); i++){
+           
+            soma += series.getAvaliacao().add(scanner.nextInt());
+        }
+
+        media = soma/series.getAvaliacao().size(); 
+
+        return media;
+    } */
 }

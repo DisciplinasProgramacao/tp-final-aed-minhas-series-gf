@@ -49,6 +49,12 @@ public class Menu {
                 case 5:
                     espectadorService.fazerLogout();
                     break;
+                case 6:
+                    espectadorService.verMinhasSeries();
+                    break;
+                case 7:
+                    serieService.mediaAvalicao();
+                    break;
                 default:
                     System.out.println("Opção inválida!");
                     break;

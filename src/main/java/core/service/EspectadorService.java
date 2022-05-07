@@ -38,4 +38,11 @@ public class EspectadorService {
         espectadorRepository.logout();
         System.out.println("Até mais o/");
     }
+    public void verMinhasSeries(){
+        if(espectadorRepository.getLogged()!=null){
+            espectadorRepository.exibirMinhasSeries();
+        } else{
+            System.out.println("Não tem ningém logado :/");
+        }
+    }
 }

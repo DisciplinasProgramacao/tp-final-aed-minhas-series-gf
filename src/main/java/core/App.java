@@ -33,7 +33,7 @@ public class App {
 //
 //        }
 
-        series.forEach(serie -> {
+      /*  series.forEach(serie -> {
             System.out.println("id da serie : " + serie.getId());
             System.out.println("Nome da serie: " + serie.getNome());
             System.out.println("Quantidade de eps: "+serie.getQtdEps());
@@ -46,9 +46,9 @@ public class App {
                 System.out.println("\t\tAvaliador: " + avaliacao.getLogin());
                 System.out.println("\t\tStars: " + avaliacao.getAvaliacao());
             });
-        });
-//        Menu menu = new Menu();
-//        menu.mainMenu();
+        });  */
+        Menu menu = new Menu();
+        menu.mainMenu();
 
 
     }

@@ -135,6 +135,8 @@ public class SeriesRepository {
 
         Lista<Avaliacao> avaliacaoLista = avaliacoesRepository.loadAvaliacao();
 
+        
+
 
 //        series.forEach(s -> avaliacaoLista.forEach(avaliacao -> {
 //            Lista<Avaliacao> avaliacaoEspectador = new Lista<>();

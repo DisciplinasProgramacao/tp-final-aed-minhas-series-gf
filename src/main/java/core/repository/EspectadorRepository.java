@@ -86,4 +86,10 @@ public class EspectadorRepository {
         logged = null;
     }
 
+    public void exibirMinhasSeries(){
+        Espectador espectador = new Espectador();
+       System.out.println(espectador.getSeries());
+      
+    }
+
 }
