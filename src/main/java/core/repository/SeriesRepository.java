@@ -4,9 +4,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import core.entity.Avaliacao;
+import core.entity.Espectador;
 import core.entity.Serie;
 import core.structure.Lista;
 import core.structure.Nodo;
@@ -15,6 +18,8 @@ import core.utils.Menu;
 public class SeriesRepository {
 
     static final File arch = new File("series.txt");
+
+    private static AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
 
     public Lista<Serie> loadSerie() throws Exception {
         return leitorSeries();
@@ -76,6 +81,7 @@ public class SeriesRepository {
         Random gerador = new Random();
         int aux = 1110;
 
+
         if (series.getPrimeiro() == null) {
             FileWriter fWrtier = new FileWriter(arch, true);
             for (int i = 0; i < 100; i++) {
@@ -126,7 +132,31 @@ public class SeriesRepository {
             series.insereFim(serie);
         }
 
+
+        Lista<Avaliacao> avaliacaoLista = avaliacoesRepository.loadAvaliacao();
+
+
+//        series.forEach(s -> avaliacaoLista.forEach(avaliacao -> {
+//            Lista<Avaliacao> avaliacaoEspectador = new Lista<>();
+//            if (avaliacao.getIdSerie() == s.getId()){
+//                avaliacaoEspectador.insereFim(avaliacao);
+//                s.setAvaliacao(avaliacaoEspectador);
+//            }
+//        }));
+
         archReader.close();
+        Lista<Serie> finalSeries = series;
+
+        finalSeries.forEach(serie -> {
+            Lista<Avaliacao> avaliacaoEspectador = new Lista<>();
+            avaliacaoLista.forEach(avaliacao -> {
+                if (avaliacao.getIdSerie() == serie.getId()) {
+                    avaliacaoEspectador.insereFim(avaliacao);
+                    serie.setAvaliacao(avaliacaoEspectador);
+                }
+            });
+        });
+
         return series;
     }
 

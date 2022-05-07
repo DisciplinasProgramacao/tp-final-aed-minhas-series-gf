@@ -9,18 +9,18 @@ public class Serie {
     private String dataLancamento;
     private int qtdEps;
 
-    private Lista<Espectador> espectadores;
+    private Lista<Avaliacao> avaliacao;
 
-    public Lista<Espectador> getEspectadores() {
-        return espectadores;
+    public Lista<Avaliacao> getAvaliacao() {
+        return avaliacao;
     }
 
-    public void setEspectadores(Lista<Espectador> espectadores) {
-        this.espectadores = espectadores;
+    public void setAvaliacao(Lista<Avaliacao> avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public Serie() {
-        
+
     }
 
     public Serie(int id, String nome, String dataLancamento, int qtdEps) {
