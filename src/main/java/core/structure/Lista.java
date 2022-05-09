@@ -80,7 +80,7 @@ public class Lista<T> {
         return size;
     }
 
-    public void forEach(Consumidor<T> consumidor) {
+    public void forEach(Consumidor<T> consumidor) throws Exception {
         if (getPrimeiro() == null) {
             return;
         }
