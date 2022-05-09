@@ -13,6 +13,9 @@ public class AvaliacoesRepository {
     static final File arch = new File("avaliacoes.txt");
     private SeriesRepository seriesRepository = new SeriesRepository();
     public Scanner in = new Scanner(System.in);
+    private double soma;
+
+
 
 
     public Lista<Avaliacao> loadAvaliacao() throws FileNotFoundException {
@@ -46,23 +49,20 @@ public class AvaliacoesRepository {
     }
 
 
-   /* public float mediaAvaliacoes(String nome) throws Exception{
-       float media = 0;
-       int soma=0;
 
-       Serie theSerie =  seriesRepository.serieHelp(nome);      
+    public double mediaAvaliacoes(String nome) throws Exception{
+       double media = 0;
+       soma = 0.0;
+       Serie theSerie =  seriesRepository.serieHelp(nome);
 
-       for(int i=0; i<theSerie.getAvaliacao().size(); i++){
- 
-           soma += theSerie.getAvaliacao().;
-           
-        }
+       theSerie.getAvaliacao().forEach(avaliacao -> {
+           soma += Double.parseDouble(avaliacao.getAvaliacao());
+       });
 
-        media = soma/theSerie.getAvaliacao().size(); 
+        media = soma/theSerie.getAvaliacao().size();
+
+        System.out.println("Serie "+ theSerie.getNome() +" tem uma media de: "+ media);
 
         return media;
-
-        //System.out.println(theSerie.getAvaliacao());
     }
-    */
 }
