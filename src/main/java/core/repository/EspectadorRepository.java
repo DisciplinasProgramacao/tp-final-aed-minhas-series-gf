@@ -89,21 +89,8 @@ public class EspectadorRepository {
         logged = null;
     }
 
-    public Espectador procuraEspectador(String login) throws Exception {
-        Espectador[] espectadores = loadEspectador();
-
-            for(int i=0; i<espectadores.length; i++){
-
-                if(login.equals(espectadores[i].getLogin())){
-                    return espectadores[i];
-                }
-            }
-            
-        return null;
-    }
-
     public void exibirMinhasSeries() throws Exception {
-       Espectador espectador = getLogged(); /*procuraEspectador(login);*/
+       Espectador espectador = getLogged(); 
 
        Lista<Avaliacao> avaliacaoLista = espectador.getSeries();
 

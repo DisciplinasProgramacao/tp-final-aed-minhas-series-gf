@@ -9,3 +9,8 @@ lima;5842;55;5
 abreu;4831;87;4
 virginia;8580;74;5
 abreu;8168;10;3
+torres;4831;100;5
+lima;6473;78;4
+coelho;5842;91;4
+soares;8580;134;5
+gomes;8168;60;4

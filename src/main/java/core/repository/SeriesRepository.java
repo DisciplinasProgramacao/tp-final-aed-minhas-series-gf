@@ -171,5 +171,4 @@ public class SeriesRepository {
 
         return series;
     }
-
 }

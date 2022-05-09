@@ -1,3 +1,10 @@
 GuilhermeCoelho;coelho
 FernandaTorres;torres
 JoaoCaram;caram
+JuliaLima;lima
+LucasSoares;soares
+PedroGomes;gomes
+NinaAbreu;abreu
+LaraVirginia;virginia
+GuilhermeCardoso;cardoso
+VitorFonseca;fonseca
