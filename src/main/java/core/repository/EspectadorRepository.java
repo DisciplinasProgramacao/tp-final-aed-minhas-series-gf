@@ -102,7 +102,7 @@ public class EspectadorRepository {
         return null;
     }
 
-    public void exibirMinhasSeries(String login) throws FileNotFoundException{
+    public void exibirMinhasSeries(String login) throws Exception {
        Espectador espectador = procuraEspectador(login);
 
        Lista<Avaliacao> avaliacaoLista = espectador.getSeries();
