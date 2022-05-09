@@ -86,8 +86,22 @@ public class EspectadorRepository {
         logged = null;
     }
 
-    public void exibirMinhasSeries(){
-        Espectador espectador = new Espectador();
+    public Espectador procuraEspectador(String login) throws FileNotFoundException{
+        Espectador[] espectadores = loadEspectador();
+
+            for(int i=0; i<espectadores.length; i++){
+
+                if(login.equals(espectadores[i].getLogin())){
+                    return espectadores[i];
+                }
+            }
+            
+        return null;
+    }
+
+    public void exibirMinhasSeries(String login) throws FileNotFoundException{
+       Espectador espectador = procuraEspectador(login);
+    
        System.out.println(espectador.getSeries());
       
     }

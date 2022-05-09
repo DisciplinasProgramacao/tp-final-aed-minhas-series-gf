@@ -38,9 +38,11 @@ public class EspectadorService {
         espectadorRepository.logout();
         System.out.println("Até mais o/");
     }
-    public void verMinhasSeries(){
+    public void verMinhasSeries() throws FileNotFoundException{
         if(espectadorRepository.getLogged()!=null){
-            espectadorRepository.exibirMinhasSeries();
+            System.out.println("Digite seu login: ");
+            String login = in.nextLine();
+            espectadorRepository.exibirMinhasSeries(login);
         } else{
             System.out.println("Não tem ningém logado :/");
         }

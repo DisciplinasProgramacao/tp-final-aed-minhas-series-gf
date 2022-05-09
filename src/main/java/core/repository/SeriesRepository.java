@@ -47,6 +47,16 @@ public class SeriesRepository {
         }
     }
 
+    public Serie serieHelp (String nome) throws Exception{
+        Lista<Serie> series = loadSerie();
+
+        Serie procura = series.procura(nome);
+        if (procura != null) {
+            return procura;
+        } 
+        return null;
+    }
+
 //    public Serie[] ordena() throws IOException {
 //        Lista<Serie> series = leitorSeries();
 //        FileWriter fWrtier = new FileWriter(arch, true);

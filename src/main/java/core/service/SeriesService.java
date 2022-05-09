@@ -2,12 +2,14 @@ package core.service;
 
 import java.io.IOException;
 import java.util.Scanner;
+import core.repository.AvaliacoesRepository;
 import core.repository.SeriesRepository;
 import core.entity.Serie;
 
 public class SeriesService {
 
     public final SeriesRepository seriesRepository = new SeriesRepository();
+    public final AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
     public Scanner in = new Scanner(System.in);
 
     public void addNewSerie() throws IOException {
@@ -38,5 +40,11 @@ public class SeriesService {
     public void sort() throws IOException {
         System.out.println("ordenando o vetor usando bubble sort, o melhor e pior metodo de todos");
         //seriesRepository.ordena();
+    }
+
+    public void mediaAvalicao() throws Exception{
+        System.out.println("Qual o nome da série?");
+        String nomeNew = in.nextLine();
+        //avaliacoesRepository.mediaAvaliacoes(nomeNew);
     }
 }
