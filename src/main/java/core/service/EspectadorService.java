@@ -11,7 +11,7 @@ public class EspectadorService {
     public Scanner in = new Scanner(System.in);
 
     public EspectadorRepository espectadorRepository = new EspectadorRepository();
-    public void fazerLogin() throws FileNotFoundException {
+    public void fazerLogin() throws Exception {
         System.out.println("Insira seu Login: ");
         String login = in.nextLine();
 

@@ -21,7 +21,7 @@ public class EspectadorRepository {
     private SeriesRepository seriesRepository = new SeriesRepository();
     public Espectador logged = null;
 
-    public Espectador[] loadEspectador() throws FileNotFoundException {
+    public Espectador[] loadEspectador() throws Exception {
 
         Scanner archReader = new Scanner(arch);
         String[] espectadorData = new String[500];
@@ -65,7 +65,7 @@ public class EspectadorRepository {
         return espectador;
     }
 
-    public Espectador login(String login) throws FileNotFoundException {
+    public Espectador login(String login) throws Exception {
         Espectador[] espectadores = loadEspectador();
 
         for (Espectador spec : espectadores) {
