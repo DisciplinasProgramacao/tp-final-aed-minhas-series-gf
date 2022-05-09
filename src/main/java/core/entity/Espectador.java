@@ -6,7 +6,6 @@ public class Espectador {
 
     private String nome;
     private String login;
-
     private Lista<Avaliacao> series;
 
     public Lista<Avaliacao> getSeries() {

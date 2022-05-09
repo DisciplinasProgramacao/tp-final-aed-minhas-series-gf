@@ -48,8 +48,6 @@ public class AvaliacoesRepository {
         return avaliacoes;
     }
 
-
-
     public double mediaAvaliacoes(String nome) throws Exception{
        double media = 0;
        soma = 0.0;
@@ -60,8 +58,6 @@ public class AvaliacoesRepository {
        });
 
         media = soma/theSerie.getAvaliacao().size();
-
-        System.out.println("Serie "+ theSerie.getNome() +" tem uma media de: "+ media);
 
         return media;
     }

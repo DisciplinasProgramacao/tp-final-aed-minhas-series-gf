@@ -39,12 +39,11 @@ public class EspectadorService {
         System.out.println("Até mais o/");
     }
     public void verMinhasSeries() throws Exception {
-        if(espectadorRepository.getLogged()!=null){
+        if (espectadorRepository.getLogged() == null) {
             System.out.println("Digite seu login: ");
             String login = in.nextLine();
-            espectadorRepository.exibirMinhasSeries(login);
-        } else{
-            System.out.println("Não tem ningém logado :/");
+            espectadorRepository.login(login);
         }
+        espectadorRepository.exibirMinhasSeries();
     }
 }

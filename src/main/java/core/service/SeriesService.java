@@ -45,6 +45,6 @@ public class SeriesService {
     public void mediaAvalicao() throws Exception{
         System.out.println("Qual o nome da série?");
         String nomeNew = in.nextLine();
-        //avaliacoesRepository.mediaAvaliacoes(nomeNew);
+        System.out.println("Media: "+ avaliacoesRepository.mediaAvaliacoes(nomeNew));
     }
 }

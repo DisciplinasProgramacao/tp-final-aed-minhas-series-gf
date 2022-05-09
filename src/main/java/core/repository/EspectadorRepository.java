@@ -102,19 +102,22 @@ public class EspectadorRepository {
         return null;
     }
 
-    public void exibirMinhasSeries(String login) throws Exception {
-       Espectador espectador = procuraEspectador(login);
+    public void exibirMinhasSeries() throws Exception {
+       Espectador espectador = getLogged(); /*procuraEspectador(login);*/
 
        Lista<Avaliacao> avaliacaoLista = espectador.getSeries();
 
        avaliacaoLista.forEach(avaliacao -> {
-           System.out.println("Avaliador: " + avaliacao.getLogin());
-           System.out.println("Eps assistidos: " + avaliacao.getEpsAssistidos());
-           System.out.println("Avaliação: "+ avaliacao.getAvaliacao());
-           Serie serie = seriesRepository.serieHelp(String.valueOf(avaliacao.getIdSerie()));
-           System.out.println(serie == null ? "Serie não encontrada" : serie.getNome()); //< expressao ? true : false >
+           if (espectador.getLogin().equals(avaliacao.getLogin())) {
+               System.out.println("----------------------------------------------------------");
+               Serie serie = seriesRepository.serieHelp(String.valueOf(avaliacao.getIdSerie()));
+               System.out.println("Avaliador: " + avaliacao.getLogin());
+               System.out.println("Eps assistidos: " + avaliacao.getEpsAssistidos());
+               System.out.println("Avaliação: " + avaliacao.getAvaliacao());
+               System.out.println(serie == null ? "Serie não encontrada" : serie.getNome()); //< expressao ? true : false >
+               System.out.println("----------------------------------------------------------");
+           }
        });
-
     }
 
 }
