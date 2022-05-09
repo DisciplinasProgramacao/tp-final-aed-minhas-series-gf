@@ -89,7 +89,7 @@ public class EspectadorRepository {
         logged = null;
     }
 
-    public Espectador procuraEspectador(String login) throws FileNotFoundException{
+    public Espectador procuraEspectador(String login) throws Exception {
         Espectador[] espectadores = loadEspectador();
 
             for(int i=0; i<espectadores.length; i++){
