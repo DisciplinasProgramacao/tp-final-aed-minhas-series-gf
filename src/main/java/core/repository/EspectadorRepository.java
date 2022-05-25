@@ -7,9 +7,6 @@ import core.structure.Lista;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class EspectadorRepository {
@@ -96,12 +93,13 @@ public class EspectadorRepository {
 
        avaliacaoLista.forEach(avaliacao -> {
            if (espectador.getLogin().equals(avaliacao.getLogin())) {
+               Serie serie = seriesRepository.findSerieById(avaliacao.getIdSerie());
+
                System.out.println("----------------------------------------------------------");
-               Serie serie = seriesRepository.serieHelp(String.valueOf(avaliacao.getIdSerie()));
                System.out.println("Avaliador: " + avaliacao.getLogin());
                System.out.println("Eps assistidos: " + avaliacao.getEpsAssistidos());
                System.out.println("Avaliação: " + avaliacao.getAvaliacao());
-               System.out.println(serie == null ? "Serie não encontrada" : serie.getNome()); //< expressao ? true : false >
+               System.out.println(serie.getNome()); //< expressao ? true : false >
                System.out.println("----------------------------------------------------------");
            }
        });

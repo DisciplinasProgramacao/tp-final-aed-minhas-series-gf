@@ -15,10 +15,10 @@ import core.utils.Menu;
 public class App {
 
     public static void main(String[] args) throws Exception {
-        SeriesRepository seriesRepository = new SeriesRepository();
-        Lista<Serie> series = seriesRepository.loadSerie();
-        EspectadorRepository espectadorRepository = new EspectadorRepository();
-        Espectador[] espectador = espectadorRepository.loadEspectador();
+//        SeriesRepository seriesRepository = new SeriesRepository();
+//        Lista<Serie> series = seriesRepository.loadSerie();
+//        EspectadorRepository espectadorRepository = new EspectadorRepository();
+//        Espectador[] espectador = espectadorRepository.loadEspectador();
 
 //        for (Espectador espectador1 : espectador) {
 //            System.out.println(espectador1.getLogin());

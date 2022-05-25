@@ -51,7 +51,10 @@ public class AvaliacoesRepository {
     public double mediaAvaliacoes(String nome) throws Exception{
        double media = 0;
        soma = 0.0;
-       Serie theSerie =  seriesRepository.serieHelp(nome);
+       Serie theSerie = seriesRepository.findSerieByName(nome);
+
+       if (theSerie.getAvaliacao() == null)
+           return -1;
 
        theSerie.getAvaliacao().forEach(avaliacao -> {
            soma += Double.parseDouble(avaliacao.getAvaliacao());

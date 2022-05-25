@@ -3,17 +3,12 @@ package core.repository;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 import core.entity.Avaliacao;
-import core.entity.Espectador;
 import core.entity.Serie;
 import core.structure.Lista;
-import core.structure.Nodo;
-import core.utils.Menu;
 
 public class SeriesRepository {
 
@@ -45,6 +40,40 @@ public class SeriesRepository {
         } else {
             System.out.println("Nao encontramos a serie que voce procura, tente inseri-la :)");
         }
+    }
+
+    public Serie findSerieById(int id) throws Exception {
+        Lista<Serie> series = loadSerie();
+
+        Serie finder = new Serie();
+
+        series.forEach(serie -> {
+            if (serie.getId() == id){
+                finder.setId(serie.getId());
+                finder.setAvaliacao(serie.getAvaliacao());
+                finder.setDataLancamento(serie.getDataLancamento());
+                finder.setQtdEps(serie.getQtdEps());
+                finder.setNome(serie.getNome());
+            }
+        });
+        return finder;
+    }
+
+    public Serie findSerieByName(String name) throws Exception {
+        Lista<Serie> series = loadSerie();
+
+        Serie finder = new Serie();
+
+        series.forEach(serie -> {
+            if (serie.getNome().equals(name)){
+                finder.setId(serie.getId());
+                finder.setAvaliacao(serie.getAvaliacao());
+                finder.setDataLancamento(serie.getDataLancamento());
+                finder.setQtdEps(serie.getQtdEps());
+                finder.setNome(serie.getNome());
+            }
+        });
+        return finder;
     }
 
     public Serie serieHelp (String nome) throws Exception{

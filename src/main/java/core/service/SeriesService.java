@@ -45,6 +45,15 @@ public class SeriesService {
     public void mediaAvalicao() throws Exception{
         System.out.println("Qual o nome da série?");
         String nomeNew = in.nextLine();
-        System.out.println("Média de avaliações: "+ avaliacoesRepository.mediaAvaliacoes(nomeNew));
+        double media = avaliacoesRepository.mediaAvaliacoes(nomeNew);
+
+        if (media == -1){
+            System.out.println("Serie não encontrada ou não possui avaliações");
+        }
+        else {
+            System.out.printf("Média de avaliações: %.2f", media);
+        }
+
+        System.out.println();
     }
 }
