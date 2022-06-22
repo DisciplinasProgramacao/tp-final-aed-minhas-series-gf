@@ -2,9 +2,12 @@ package core.repository;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import core.entity.Avaliacao;
+import core.entity.Espectador;
 import core.entity.Serie;
 import core.structure.Lista;
 
@@ -12,15 +15,11 @@ public class AvaliacoesRepository {
     
     static final File arch = new File("avaliacoes.txt");
     private SeriesRepository seriesRepository = new SeriesRepository();
-    public Scanner in = new Scanner(System.in);
     private double soma;
-
-
-
 
     public Lista<Avaliacao> loadAvaliacao() throws FileNotFoundException {
         Scanner archReader = new Scanner(arch);
-        String[] avaliacaoData = new String[500];
+        String[] avaliacaoData = new String[30000];
         int i = 0;
 
         while (archReader.hasNextLine()) {
@@ -63,5 +62,20 @@ public class AvaliacoesRepository {
         media = soma/theSerie.getAvaliacao().size();
 
         return media;
+    }
+
+    public double mediaSeriesPorEspectador() throws Exception {
+        EspectadorRepository espectadorRepository = new EspectadorRepository();
+        Lista<Serie> serieLista = seriesRepository.loadSerie();
+        Espectador[] espectadores = espectadorRepository.loadEspectador();
+
+        int seriePerEspectador = 0;
+
+//        for (int i = 0; i < espectadores.length; i++) {
+//            if (espectadores[i].getSeries() != null || espectadores[i].getSeries().size() != 0 || espectadores[i] != null)
+//                seriePerEspectador += espectadores[i].getSeries().size();
+//        }
+
+        return espectadores.length/serieLista.size();
     }
 }

@@ -56,4 +56,8 @@ public class SeriesService {
 
         System.out.println();
     }
+
+    public void mediaSeriesPorEspectador() throws Exception {
+        System.out.println("Media de series por espectadores " + avaliacoesRepository.mediaSeriesPorEspectador());
+    }
 }

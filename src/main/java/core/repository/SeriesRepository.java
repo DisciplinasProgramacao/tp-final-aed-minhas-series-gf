@@ -14,7 +14,7 @@ public class SeriesRepository {
 
     static final File arch = new File("series.txt");
 
-    private static AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
+    private static final AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
 
     public Lista<Serie> loadSerie() throws Exception {
         return leitorSeries();
@@ -141,7 +141,7 @@ public class SeriesRepository {
     public static Lista<Serie> leitorSeries() throws Exception {
 
         Scanner archReader = new Scanner(arch);
-        String[] serieData = new String[500];
+        String[] serieData = new String[300000];
         int i = 0;
 
         while (archReader.hasNextLine()) {

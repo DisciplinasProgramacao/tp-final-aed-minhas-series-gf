@@ -26,6 +26,7 @@ public class Menu {
             System.out.println("5 - Logout");
             System.out.println("6 - Ver Minhas Series (Precisa estar logado)");
             System.out.println("7 - Ver Média de avaliações de uma série");
+            System.out.println("8 - Ver Média de series por espectador");
 
             opcao = sc.nextInt();
 
@@ -54,6 +55,9 @@ public class Menu {
                     break;
                 case 7:
                     serieService.mediaAvalicao();
+                    break;
+                case 8:
+                    serieService.mediaSeriesPorEspectador();
                     break;
                 default:
                     System.out.println("Opção inválida!");

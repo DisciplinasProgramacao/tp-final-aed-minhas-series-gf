@@ -14,14 +14,13 @@ public class EspectadorRepository {
     static final File arch = new File("espectadores.txt");
 
     private AvaliacoesRepository avaliacoesRepository = new AvaliacoesRepository();
-
     private SeriesRepository seriesRepository = new SeriesRepository();
     public Espectador logged = null;
 
     public Espectador[] loadEspectador() throws Exception {
 
         Scanner archReader = new Scanner(arch);
-        String[] espectadorData = new String[500];
+        String[] espectadorData = new String[218540];
         int i = 0;
 
         while (archReader.hasNextLine()) {

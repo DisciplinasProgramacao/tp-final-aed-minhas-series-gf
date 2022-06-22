@@ -10,7 +10,7 @@ public class EspectadorService {
 
     public Scanner in = new Scanner(System.in);
 
-    public EspectadorRepository espectadorRepository = new EspectadorRepository();
+    public final EspectadorRepository espectadorRepository = new EspectadorRepository();
     public void fazerLogin() throws Exception {
         System.out.println("Insira seu Login: ");
         String login = in.nextLine();
@@ -26,7 +26,7 @@ public class EspectadorService {
             System.out.println("Login nao encontrado");
         }
         else {
-            System.out.printf("Bem vindo" + response.getNome());
+            System.out.printf("Bem vindo " + response.getNome());
         }
     }
     public void fazerLogout() throws FileNotFoundException {
