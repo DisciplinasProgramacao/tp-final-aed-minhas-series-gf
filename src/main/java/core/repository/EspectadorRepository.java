@@ -21,7 +21,7 @@ public class EspectadorRepository {
 
         Scanner archReader = new Scanner(arch);
         String[] espectadorData = new String[218540];
-        int i = 0;
+        int i= 0;
 
         while (archReader.hasNextLine()) {
             String data = archReader.nextLine();
