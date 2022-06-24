@@ -3,8 +3,8 @@ package core.repository;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import core.entity.Avaliacao;
 import core.entity.Espectador;
@@ -71,11 +71,34 @@ public class AvaliacoesRepository {
 
         int seriePerEspectador = 0;
 
-//        for (int i = 0; i < espectadores.length; i++) {
+//        for (int i = 0; i < espectadores.length; i++) { npe dont know why :(
 //            if (espectadores[i].getSeries() != null || espectadores[i].getSeries().size() != 0 || espectadores[i] != null)
 //                seriePerEspectador += espectadores[i].getSeries().size();
 //        }
 
         return espectadores.length/serieLista.size();
+    }
+
+    public void topSeries() throws Exception {
+        Lista<Serie> serieLista = seriesRepository.loadSerie();
+        Map<String, Serie> top10Series = new HashMap<>();
+
+        serieLista.forEach(serie -> {
+            top10Series.put(String.valueOf(mediaAvaliacoes(serie.getNome())), serie);
+        });
+
+        Set<String> keySet = top10Series.keySet();
+
+        List<String> collect = keySet.stream().sorted(Comparator.comparing(String::hashCode)).collect(Collectors.toList());
+
+        int i=0;
+
+        for (String c : collect) {
+            if (i < 10) {
+                System.out.println(top10Series.get(c).toStringPt2() + "\nmedia: "+ c);
+                i++;
+            }
+        }
+
     }
 }
